@@ -2,11 +2,11 @@ from google import genai
 from google.genai import types
 import psycopg2
 
-client = genai.Client(api_key="AIzaSyCtfMuUe1mZoa0yzg09MSxx7c5WT0-_GAM")
+client = genai.Client(api_key="") #Your api key here
 model = "gemini-2.0-flash"
 
-query = "how many times was the product delivered late"
 
+query = "how many times was the product delivered late"
 
 prompt  = "Find key words from the text relavent to 2 tables - customer and complaint tables and their columns." \
 "Table names: customer, complaint"\
@@ -15,7 +15,6 @@ prompt  = "Find key words from the text relavent to 2 tables - customer and comp
 "Find them for both tables and return them. Also try to find the filter for the data."\
 "Format your answer as such - customer tabel -(your repsonse) followed by complaint table -(your repsonse). Folow this with your explenation if asked "\
 "Give a very simple explenation of the question at the end."
-
 
 response1 = client.models.generate_content(
     model=model, contents=query,
@@ -42,8 +41,6 @@ response2 = client.models.generate_content(
         system_instruction = prompt2
     )
 )
-#print("response2")
-#print(response2.text)
 print("\n")
 
 prompt3 = "extract bare bones sql comand only. extract from 'select' to ';'"
@@ -58,7 +55,7 @@ print("repsonse3")
 print(response3.text)
 print("\n")
 
-#databse connection
+# database connection
 conn = psycopg2.connect(
     host="localhost",
     port=5432,
@@ -66,7 +63,6 @@ conn = psycopg2.connect(
     user="postgres",
     password="postgres"
 )
-
 
 cursor = conn.cursor()
 cursor.execute(response3.text)
@@ -77,7 +73,6 @@ for row in rows:
 
 cursor.close()
 conn.close()
-
 
 
 prompt4 = "analyse the data based on the sql command and the data returned and tell what can be improved upon for the company to cater to its customers."\
@@ -92,7 +87,6 @@ response4 = client.models.generate_content(
     )
 )
 print(response4.text)
-
 
 
 #intial - catching key words
@@ -117,4 +111,5 @@ print("total_tokens3: ", total_tokens)
 total_tokens = client.models.count_tokens(
     model=model, contents=prompt4
 )
+
 print("total_tokens4: ", total_tokens)
