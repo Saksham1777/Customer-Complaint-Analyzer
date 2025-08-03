@@ -28,12 +28,9 @@ A Python project leveraging generative AI to extract key insights and generate S
 1. **Prepare Your Database:**  
    Ensure the required tables (`customer` and `complaint`) exist and are populated as described in the schema in the script comments.
 
-2. **Run the Analyzer Script:**
-bash
-python googleapi.py
+2. **Run the Analyzer Script**
 
-
-4. **Example Query Flow:**
+3. **Example Query Flow:**
    - Script asks: _"How many times was the product delivered late?"_
    - Extracts keywords and constructs SQL with Gemini AI.
    - Executes SQL and returns results, along with AI-driven analysis.
@@ -59,6 +56,8 @@ Customer's city
 
 customer_size: VARCHAR(10)
 Customer size (large, medium, small)
+
+
 
 **complaint Table**
 
