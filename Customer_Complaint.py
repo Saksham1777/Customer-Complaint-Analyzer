@@ -57,11 +57,11 @@ print("\n")
 
 # database connection
 conn = psycopg2.connect(
-    host="localhost",
-    port=5432,
-    database="Lead",
-    user="postgres",
-    password="postgres"
+    host="",
+    port=, # port number 
+    database="", # database name
+    user="", # user id
+    password="" 
 )
 
 cursor = conn.cursor()
@@ -89,7 +89,7 @@ response4 = client.models.generate_content(
 print(response4.text)
 
 
-#intial - catching key words
+# token usage tracking
 total_tokens = client.models.count_tokens(
     model=model, contents=prompt
 )
@@ -113,3 +113,4 @@ total_tokens = client.models.count_tokens(
 )
 
 print("total_tokens4: ", total_tokens)
+
