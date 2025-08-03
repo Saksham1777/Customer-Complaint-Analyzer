@@ -14,16 +14,9 @@ A Python project leveraging generative AI to extract key insights and generate S
 
 ---
 
-## Use Cases
 
-- Business intelligence for customer service teams.
-- Data-driven root cause analysis of complaint trends.
-- Automate reporting for customer satisfaction initiatives.
-- Accelerate development/testing of GPT-powered analytics tooling.
 
----
-
-**4. Configure environment variables**
+** Configure environment variables**
 
 - Insert your **Google Gemini AI API Key.**
 - Update your **PostgreSQL database credentials** (host, port, database, user, password).
@@ -36,9 +29,9 @@ A Python project leveraging generative AI to extract key insights and generate S
    Ensure the required tables (`customer` and `complaint`) exist and are populated as described in the schema in the script comments.
 
 2. **Run the Analyzer Script:**
-   '''bash
-    python googleapi.py
-   '''
+bash
+python googleapi.py
+
 
 4. **Example Query Flow:**
    - Script asks: _"How many times was the product delivered late?"_
@@ -50,23 +43,43 @@ A Python project leveraging generative AI to extract key insights and generate S
 ## Table Schemas
 Below are the database schemas used by the analyzer:
 
-customer Table
-Column	        Type	            Description
-customer_id	    SERIAL            PRIMARY KEY / INTEGER	Unique customer identifier
-name	          VARCHAR(100)	    Customer's name
-PIN	            VARCHAR(10)	      Postal identification number
-city	          VARCHAR(50)	      Customer's city
-customer_size	  VARCHAR(10)	      Size: 'large', 'medium', 'small'
+**customer Table**
+customer_id: SERIAL PRIMARY KEY / INTEGER
+Unique customer identifier
 
-complaint Table
-Column	        Type	            Description
-complaint_id	  SERIAL            PRIMARY KEY / INTEGER	Unique complaint identifier
-complaint_date	DATE	            Date complaint was made
-customer_id	    INTEGER	          References customer.customer_id
-text	          TEXT	            Complaint description
-severity	      VARCHAR(10)	      'high', 'medium', or 'low'
-priority	      VARCHAR(10)	      'high', 'medium', or 'low'
-status	        VARCHAR(15)	      'open', 'in progress', 'resolved', 'closed'
+name: VARCHAR(100)
+Customer's name
+
+PIN: VARCHAR(10)
+Postal identification number
+
+city: VARCHAR(50)
+Customer's city
+
+customer_size: VARCHAR(10)
+Customer size (large, medium, small)
+
+**complaint Table**
+complaint_id: SERIAL PRIMARY KEY / INTEGER
+Unique complaint identifier
+
+complaint_date: DATE
+Date complaint was made
+
+customer_id: INTEGER
+References customer.customer_id
+
+text: TEXT
+Complaint description
+
+severity: VARCHAR(10)
+Severity (high, medium, low)
+
+priority: VARCHAR(10)
+Priority (high, medium, low)
+
+status: VARCHAR(15)
+Status (open, in progress, resolved, closed)
 
 
 
