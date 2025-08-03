@@ -16,7 +16,7 @@ A Python project leveraging generative AI to extract key insights and generate S
 
 
 
-** Configure environment variables**
+**Configure environment variables**
 
 - Insert your **Google Gemini AI API Key.**
 - Update your **PostgreSQL database credentials** (host, port, database, user, password).
@@ -44,6 +44,7 @@ python googleapi.py
 Below are the database schemas used by the analyzer:
 
 **customer Table**
+
 customer_id: SERIAL PRIMARY KEY / INTEGER
 Unique customer identifier
 
@@ -60,6 +61,7 @@ customer_size: VARCHAR(10)
 Customer size (large, medium, small)
 
 **complaint Table**
+
 complaint_id: SERIAL PRIMARY KEY / INTEGER
 Unique complaint identifier
 
